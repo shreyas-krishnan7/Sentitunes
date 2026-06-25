@@ -1,6 +1,6 @@
 # SentiTunes: AI-Based Mood Playlist Generator
 
-SentiTunes is an AI-powered web app that analyzes your mood through text, voice, or facial expressions and recommends personalized music playlists. Whether you're feeling happy, sad, nostalgic, or anything in between, SentiTunes finds the perfect tunes for your emotions—instantly!
+SentiTunes is an AI-powered web app that analyzes your mood through text and recommends personalized music playlists. Whether you're feeling happy, sad, nostalgic, or anything in between, SentiTunes finds the perfect tunes for your emotions—instantly!
 
 ---
 
@@ -10,10 +10,7 @@ SentiTunes is an AI-powered web app that analyzes your mood through text, voice,
   Detects your mood using advanced NLP (VADER, KNN, keyword, fuzzy matching) and Computer Vision (DeepFace).
 - **Triple Input Methods:**  
   - 📝 Type your feelings
-  - 🎙️ Speak your emotions
-  - 📹 Use facial expression analysis
-- **Real-time Facial Analysis:**  
-  Uses OpenCV and DeepFace for accurate emotion detection from webcam feed.
+
 - **Personalized Playlist Recommendations:**  
   Suggests YouTube Music playlists tailored to your mood, genre, and time preferences.
 - **Modern, Responsive UI:**  
