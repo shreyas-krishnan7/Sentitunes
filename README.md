@@ -100,7 +100,7 @@ mood_playlist_app/
 
 ---
 
-## 🙏 Credits
+## Credits
 
 - [Streamlit](https://streamlit.io/)
 - [OpenCV](https://opencv.org/)
