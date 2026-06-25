@@ -1,0 +1,29 @@
+# Virtual environments
+venv/
+newvenv/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.so
+
+# Model files and deep learning
+*.h5
+*.pkl
+*.model
+.cache/
+*.pth
+.deepface/
+.torch/
+pretrained_models/
+
+# IDE
+.idea/
+.vscode/
+
+# Logs and temp files
+*.log
+*.db
+.DS_Store
+Thumbs.db

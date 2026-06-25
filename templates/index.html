@@ -1,0 +1,137 @@
+templates\index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SentiTunes - Mood Based Music</title>
+    <style>
+        body {
+            background-color: #1c1c1e;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .logo-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .logo {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+        .title {
+            font-size: 4.5rem;
+            font-weight: bold;
+            color: #ff4b94;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 2rem;
+            color: #f5c2d0;
+            margin-bottom: 30px;
+        }
+        .mood-input {
+            width: 100%;
+            max-width: 600px;
+            height: 150px;
+            background-color: #292930;
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .submit-btn {
+            background-color: #ff4b94;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .submit-btn:hover {
+            transform: scale(1.05);
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #292930;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/bawra.jpg') }}" alt="Logo Left" class="logo">
+            <div>
+                <h1 class="title">SentiTunes</h1>
+                <p class="subtitle">AI-Powered Mood Music</p>
+            </div>
+            <img src="{{ url_for('static', filename='images/gustakh.jpg') }}" alt="Logo Right" class="logo">
+        </div>
+        
+        <form action="/analyze_mood" method="POST">
+            <textarea 
+                name="mood_input" 
+                class="mood-input" 
+                placeholder="How are you feeling today? Share your thoughts and emotions..."
+                required></textarea>
+            <button type="submit" class="submit-btn">Find My Music</button>
+        </form>
+        
+        <div id="results" class="results" style="display: none;">
+            <!-- Results will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Analyzing...';
+            
+            try {
+                const response = await fetch('/analyze_mood', {
+                    method: 'POST',
+                    body: new FormData(e.target)
+                });
+                const data = await response.json();
+                
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = `
+                    <h2>Your Mood: ${data.mood}</h2>
+                    <div class="playlists">
+                        ${data.playlists.map(playlist => `
+                            <div class="playlist-card">
+                                <h3>${playlist.title}</h3>
+                                <a href="${playlist.url}" target="_blank">Listen on YouTube Music</a>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                resultsDiv.style.display = 'block';
+            } catch (error) {
+                console.error('Error:', error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Find My Music';
+            }
+        });
+    </script>
+</body>
+</html>
