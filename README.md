@@ -68,9 +68,9 @@ python-Levenshtein
 - **Text Input:**  
   Type your feelings and click "Analyze My Mood & Find Music".
 - **Voice Input:**  
-  Click "Speak Your Feelings", record your voice, and let SentiTunes do the rest!
+  Click "Speak Your Feelings", record your voice, and let SentiTunes do the rest! ( Working on the expansion to involve voice input )
 - **Facial Expression:**  
-  Click "Facial Expression", allow camera access, and let the AI analyze your mood.
+  Click "Facial Expression", allow camera access, and let the AI analyze your mood. ( Working on the expansion to involve facial input )
 - **Get Playlists:**  
   Instantly receive music playlists that match your detected mood.
 
@@ -80,8 +80,6 @@ python-Levenshtein
 
 - **Mood Detection Methods:**
   - Text Analysis: VADER sentiment, KNN classification, keyword matching
-  - Voice Input: Speech-to-text followed by sentiment analysis
-  - Facial Analysis: DeepFace emotion detection with OpenCV
 - **Playlist Recommendation:**  
   Fetches relevant playlists from YouTube Music based on detected mood.
 - **Confidence Display:**  
